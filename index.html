@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Pratik Chalise's web development portfolio">
-  <meta name="keywords" content="Pratik Chalise, Web Developer, HTML, CSS, Portfolio, pratik, Pratik portfolio, pratk netlify, pratiksuii">
+  <meta name="keywords"
+    content="Pratik Chalise, Web Developer, HTML, CSS, JavaScript, C, Portfolio, pratik, Pratik portfolio, pratk netlify, pratiksuii">
   <meta name="author" content="Pratik Chalise">
   <meta name="google-site-verification" content="E-qAu7MSPMJ6pgJHrTaTt0OUIB5Vhth_9K1MiPES2aM" />
   <title>Pratik Chalise</title>
@@ -24,19 +25,36 @@
       --hover: #0ea5e9;
       --white: #ffffff;
       --shadow: rgba(0, 0, 0, 0.4);
+      --text-input-bg: var(--white);
+      --text-input-color: #1e293b;
+      --text-input-border: #475569;
+    }
+
+    body.light-mode {
+      --bg: #f8fafc;
+      --soft-bg: #e2e8f0;
+      --primary: #1e293b;
+      --accent: #0ea5e9;
+      --hover: #38bdf8;
+      --white: #0f172a;
+      --shadow: rgba(0, 0, 0, 0.15);
+      --text-input-bg: var(--white);
+      --text-input-color: #1e293b;
+      --text-input-border: #94a3b8;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Montserrat', sans-serif;
     }
 
     body {
       background-color: var(--bg);
       color: var(--primary);
       scroll-behavior: smooth;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .navbar {
@@ -105,14 +123,28 @@
       color: var(--accent);
     }
 
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 24px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      margin-left: 1rem;
+    }
+
+    .theme-toggle:hover {
+      color: var(--accent);
+    }
+
     .profile-img {
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px var(--shadow);
-      animation: fadeIn 2s ease;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      animation: fadeIn 2s ease forwards;
     }
 
     .hero {
@@ -121,183 +153,242 @@
       align-items: center;
       padding: 4rem 2rem;
       text-align: center;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--soft-bg) 100%);
+      min-height: calc(100vh - 70px);
+      justify-content: center;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      animation: fadeUp 2s ease;
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 1.5s ease forwards;
+      text-shadow: 2px 2px 4px var(--shadow);
     }
 
     .hero p {
-      max-width: 600px;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      animation: fadeUp 2.2s ease;
+      max-width: 700px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      animation: fadeUp 1.8s ease forwards;
+      margin-bottom: 2rem;
     }
 
     .btn,
     .btn2 {
       background-color: var(--accent);
       color: var(--bg);
-      padding: 0.75rem 1.5rem;
-      margin-top: 10px;
+      padding: 0.85rem 1.8rem;
+      margin-top: 15px;
       border: none;
       border-radius: 12px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       transition: background 0.3s, transform 0.2s, box-shadow 0.3s ease;
       text-decoration: none;
       display: inline-block;
+      font-size: 1.05rem;
     }
 
     .btn:hover,
     .btn2:hover {
       background-color: var(--hover);
-      transform: translateY(-2px);
-      box-shadow: 0px 4px 15px var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0px 6px 20px rgba(56, 189, 248, 0.6);
     }
 
     .skills-section {
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
       background-color: var(--soft-bg);
       text-align: center;
     }
 
     .skills-section h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--accent);
+      animation: slideInLeft 1s ease forwards;
     }
 
     .skills {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .skill-card {
-      width: 200px;
-      padding: 1rem;
+      width: 220px;
+      padding: 1.5rem;
       background-color: var(--bg);
-      border-radius: 15px;
-      box-shadow: 2px 4px 15px var(--shadow);
-      transition: transform 0.3s, box-shadow 0.3s ease;
+      border-radius: 18px;
+      box-shadow: 4px 6px 20px var(--shadow);
+      transition: transform 0.4s, box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 200px;
     }
 
     .skill-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px var(--accent);
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.7);
     }
 
     .skill-card i {
-      font-size: 40px;
+      font-size: 50px;
       color: var(--accent);
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       transition: transform 0.3s ease;
     }
 
     .skill-card:hover i {
-      transform: rotate(15deg);
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    .skill-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+    }
+
+    .skill-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--primary);
     }
 
     .projects-section {
       background-color: var(--bg);
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 5rem 2rem;
+    }
+
+    .projects-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--accent);
+      animation: slideInRight 1s ease forwards;
     }
 
     .projects {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .project-card {
-      width: 280px;
-      padding: 1rem;
+      width: 300px;
+      padding: 1.5rem;
       background-color: var(--soft-bg);
-      border-radius: 15px;
-      box-shadow: 2px 4px 15px var(--shadow);
-      transition: transform 0.3s, box-shadow 0.3s ease;
+      border-radius: 18px;
+      box-shadow: 4px 6px 20px var(--shadow);
+      transition: transform 0.4s, box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .project-card:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 0 15px var(--accent);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.7);
     }
 
     .project-card h3 {
       color: var(--accent);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
     }
 
     .project-card p {
       color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .project-card .btn {
+      align-self: flex-start;
+      margin-top: 1rem;
     }
 
     .contact-section {
-      padding: 4rem 2rem;
-      background-color: var(--bg);
+      padding: 5rem 2rem;
+      background-color: var(--soft-bg);
       color: var(--white);
       text-align: center;
     }
 
     .contact-section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
       color: var(--accent);
     }
 
     .contact-section p {
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      color: var(--white);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: var(--primary);
+      line-height: 1.7;
     }
 
     .contact-form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      max-width: 500px;
+      gap: 1.2rem;
+      max-width: 600px;
       margin: 0 auto;
       background-color: var(--bg);
+      padding: 2.5rem;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     }
 
     .contact-form input,
     .contact-form textarea {
-      padding: 0.75rem;
-      background-color: var(--white);
-      color:#1e293b;
-      border: 1px solid #475569;
+      padding: 1rem;
+      background-color: var(--text-input-bg);
+      color: var(--text-input-color);
+      border: 1px solid var(--text-input-border);
       border-radius: 10px;
       font-size: 1rem;
       transition: all 0.3s ease;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #64748b;
     }
 
     .contact-form input:focus,
     .contact-form textarea:focus {
       border-color: var(--accent);
       outline: none;
-      box-shadow: 0 0 10px var(--accent);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
     }
 
     .contact-form textarea {
       resize: vertical;
-      min-height: 120px;
+      min-height: 150px;
+    }
+
+    .contact-section .btn2 {
+      margin: 15px auto;
+      display: block;
+      width: fit-content;
     }
 
     .footer {
       background-color: var(--bg);
       color: var(--primary);
       text-align: center;
-      padding: 1rem;
-      font-size: 14px;
+      padding: 1.2rem;
+      font-size: 15px;
       opacity: 0.8;
       transition: opacity 0.3s ease;
     }
@@ -306,10 +397,14 @@
       opacity: 1;
     }
 
+    .social-icons {
+      margin-top: 2rem;
+    }
+
     .social-icons a {
       color: var(--accent);
-      font-size: 28px;
-      margin: 0 12px;
+      font-size: 32px;
+      margin: 0 15px;
       transition: all 0.4s ease;
       text-decoration: none;
       position: relative;
@@ -320,7 +415,7 @@
       position: absolute;
       width: 0%;
       height: 3px;
-      bottom: -5px;
+      bottom: -8px;
       left: 50%;
       background-color: var(--hover);
       transition: all 0.4s ease;
@@ -347,6 +442,7 @@
         background-color: var(--soft-bg);
         width: 100%;
         padding: 1rem;
+        box-shadow: 0 4px 10px var(--shadow);
       }
 
       .nav-links.active {
@@ -357,12 +453,49 @@
         display: block;
       }
 
+      .navbar {
+        justify-content: space-between;
+      }
+
+      .navbar .logo {
+        margin-right: auto;
+      }
+
+      .theme-toggle {
+        margin-left: 0.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .skills-section h2,
+      .projects-section h2,
+      .contact-section h2 {
+        font-size: 2rem;
+      }
+
+      .skills,
+      .projects {
+        gap: 1.5rem;
+      }
+
+      .skill-card,
+      .project-card {
+        width: 90%;
+        max-width: 300px;
+      }
+
       .contact-form {
-        flex-direction: column;
+        padding: 1.5rem;
       }
     }
 
-    
+
     @keyframes float {
 
       0%,
@@ -378,7 +511,7 @@
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.8);
       }
 
       to {
@@ -390,7 +523,7 @@
     @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
       }
 
       to {
@@ -398,12 +531,36 @@
         transform: translateY(0);
       }
     }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   </style>
 
 </head>
 
 <body>
- 
+
   <nav class="navbar">
     <div class="logo"><i class="fas fa-laptop-code"></i> Pratik</div>
     <div class="nav-links" id="navLinks">
@@ -412,17 +569,21 @@
       <a href="#projects1">My Projects</a>
       <a href="#contact">Contact</a>
     </div>
-    <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <div class="hamburger" onclick="toggleMobileMenu()">
       <i class="fas fa-bars"></i>
     </div>
   </nav>
 
- 
+
   <section class="hero" id="home">
     <img src="photo1.jpg" alt="Pratik Chalise" class="profile-img">
     <h1>Hi, I am Pratik Chalise</h1>
     <p>I’m a web developer and a student reading in Grade 9 with a passion for modern website design. I can create
-      responsive and beautiful websites using HTML and CSS. Besides coding, I love to watch football.</p>
+      responsive and beautiful websites using HTML, CSS, and some JavaScript. Besides coding, I love to watch
+      football.</p>
     <a href="#contact" class="btn">Contact Me</a>
   </section>
 
@@ -430,41 +591,50 @@
   <section class="skills-section" id="skills">
     <h2>What I Know!</h2>
     <div class="skills">
-      <div class="skill-card">
+      <div class="skill-card" data-aos="fade-up" data-aos-duration="1000">
         <i class="fab fa-html5"></i>
         <h3>HTML</h3>
         <p>HTML is the standard language for creating web pages and basic structure of websites.</p>
       </div>
-      <div class="skill-card">
+      <div class="skill-card" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">
         <i class="fab fa-css3-alt"></i>
         <h3>CSS</h3>
         <p>CSS styles the appearance of web pages, making them beautiful and responsive.</p>
       </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-duration="1400" data-aos-delay="200">
+        <i class="fab fa-js-square"></i>
+        <h3>JavaScript</h3>
+        <p>I have decent amount of knowlegde in JS but i am reading it rn.</p>
+      </div>
+      <div class="skill-card" data-aos="fade-up" data-aos-duration="1600" data-aos-delay="300">
+        <i class="fas fa-code"></i>
+        <h3>C Language</h3>
+        <p>I have basic knowledge in C from my school.</p>
+      </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section class="projects-section" id="projects1">
     <h2>My Projects</h2>
-    <br>
     <div class="projects">
-      <div class="project-card">
+      <div class="project-card" data-aos="zoom-in-up" data-aos-duration="1000">
         <h3>Top 7 Football Clubs</h3>
         <p>My first webpage when I started my journey.</p>
         <a href="https://7bestfootbalclubs.netlify.app/" target="_blank" class="btn">Visit</a>
       </div>
-      <div class="project-card">
+      <div class="project-card" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="100">
         <h3>My Football Club Picks</h3>
         <p>My second website showing football club details.</p>
         <a href="https://pratik-clubs.netlify.app/" target="_blank" class="btn">Visit</a>
       </div>
-     
-      <div class="project-card">
+
+      <div class="project-card" data-aos="zoom-in-up" data-aos-duration="1400" data-aos-delay="200">
         <h3>Kiran Gautam Portfolio</h3>
-        <p>A beautiful portfolio site made for my brother. Also my first project with proper css and good typography.</p>
+        <p>A beautiful portfolio site made for my brother. Also my first project with proper css and good typography.
+        </p>
         <a href="https://kiran-gautam.netlify.app" target="_blank" class="btn">Visit</a>
       </div>
-      <div class="project-card">
+      <div class="project-card" data-aos="zoom-in-up" data-aos-duration="1600" data-aos-delay="300">
         <h3>Football league simulator</h3>
         <p>A league simulator where you can make your own tournament with specific number of teams and simulate it.</p>
         <a href="https://pratikleaguesimulator.netlify.app" target="_blank" class="btn">Visit</a>
@@ -472,37 +642,110 @@
     </div>
   </section>
 
- 
+
   <section class="contact-section" id="contact">
     <h2>Get in Touch</h2>
-    <p>Call or email me and I’ll get back to you as soon as possible.</p>
-
-    <form action="https://formspree.io/f/xyzjwqez" method="POST" class="contact-form">
+    <p>Feel free to reach out to me! Whether you have a question, a project idea, or just want to connect, I'm happy to
+      hear from you. Call or email me and I’ll get back to you as soon as possible.</p>
+    <form action="https://formspree.io/f/xyzjwqez" method="POST" class="contact-form" data-aos="fade-up"
+      data-aos-duration="1000">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
       <button type="submit" class="btn">Send Message</button>
     </form>
 
-    <br>
-    <a href="tel:9847264598" class="btn2">Call Me</a><br /><br />
-    <a href="mailto:chalpratik3089@gmail.com" class="btn2">Mail Me</a><br>
+    <a href="tel:9847264598" class="btn2">Call Me</a>
+    <a href="mailto:chalpratik3089@gmail.com" class="btn2">Mail Me</a>
 
-    <div class="social-icons"><br>
-      <a href="https://www.youtube.com/@vibewithpratik007" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.facebook.com/pratik.chalise.2025/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://github.com/Pratiksuii7" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/pratik_1_7_suiiii/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <div class="social-icons" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+      <a href="https://www.youtube.com/@vibewithpratik007" target="_blank" aria-label="YouTube"><i
+          class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com/pratik.chalise.2025/" target="_blank" aria-label="Facebook"><i
+          class="fab fa-facebook-f"></i></a>
+      <a href="https://github.com/Pratiksuii7" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/pratik_1_7_suiiii/" target="_blank" aria-label="Instagram"><i
+          class="fab fa-instagram"></i></a>
     </div>
   </section>
 
 
   <div class="footer">
-    &copy; 2025 Pratik Chalise All Rights Reserved.
+    © 2025 Pratik Chalise All Rights Reserved.
   </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: 'ease-out-quad',
+    });
+
+    function toggleMobileMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        const navLinks = document.getElementById('navLinks');
+        if (navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+        }
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const profileImg = document.querySelector('.profile-img');
+      profileImg.style.opacity = '0';
+      profileImg.style.transform = 'scale(0.8)';
+      setTimeout(() => {
+        profileImg.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        profileImg.style.opacity = '1';
+        profileImg.style.transform = 'scale(1)';
+      }, 100);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = themeToggle.querySelector('i');
+
+    function applyTheme(isLightMode) {
+      if (isLightMode) {
+        body.classList.add('light-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        body.classList.remove('light-mode');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      applyTheme(true);
+    } else {
+      applyTheme(false);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isLightMode = body.classList.contains('light-mode');
+      applyTheme(!isLightMode);
+      localStorage.setItem('theme', isLightMode ? 'dark' : 'light');
+    });
+  </script>
 </body>
 
 </html>
