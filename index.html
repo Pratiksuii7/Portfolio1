@@ -10,13 +10,14 @@
   <meta name="author" content="Pratik Chalise">
   <meta name="google-site-verification" content="E-qAu7MSPMJ6pgJHrTaTt0OUIB5Vhth_9K1MiPES2aM" />
   <title>Pratik Chalise</title>
-  
+
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <link rel="icon" type="image/jpeg" href="photo.jpg" />
 
+  // My Ultimate Portfolio Website's "CSS"
   <style>
     :root {
       --bg: #0f172a;
@@ -51,11 +52,15 @@
       font-family: 'Montserrat', sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--primary);
-      scroll-behavior: smooth;
       transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
     }
 
     .navbar {
@@ -144,8 +149,9 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 25px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-      animation: fadeIn 2s ease forwards;
+      box-shadow: 0 8px 20px var(--shadow);
+      border: 5px solid var(--accent);
+      animation: fadeInScale 2s ease forwards;
     }
 
     .hero {
@@ -155,6 +161,8 @@
       padding: 4rem 2rem;
       text-align: center;
       background: linear-gradient(135deg, var(--bg) 0%, var(--soft-bg) 100%);
+      background-size: cover;
+      background-attachment: fixed;
       min-height: calc(100vh - 70px);
       justify-content: center;
     }
@@ -185,17 +193,18 @@
       border-radius: 12px;
       cursor: pointer;
       font-weight: 700;
-      transition: background 0.3s, transform 0.2s, box-shadow 0.3s ease;
+      transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
       font-size: 1.05rem;
+      box-shadow: 0 4px 10px rgba(56, 189, 248, 0.4);
     }
 
     .btn:hover,
     .btn2:hover {
       background-color: var(--hover);
-      transform: translateY(-3px);
-      box-shadow: 0px 6px 20px rgba(56, 189, 248, 0.6);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.6);
     }
 
     .skills-section {
@@ -231,6 +240,25 @@
       justify-content: center;
       text-align: center;
       min-height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), transparent);
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .skill-card:hover::before {
+      opacity: 1;
     }
 
     .skill-card:hover {
@@ -243,6 +271,8 @@
       color: var(--accent);
       margin-bottom: 15px;
       transition: transform 0.3s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .skill-card:hover i {
@@ -253,12 +283,16 @@
       font-size: 1.4rem;
       margin-bottom: 0.75rem;
       color: var(--primary);
+      position: relative;
+      z-index: 1;
     }
 
     .skill-card p {
       font-size: 0.95rem;
       line-height: 1.5;
       color: var(--primary);
+      position: relative;
+      z-index: 1;
     }
 
     .projects-section {
@@ -315,6 +349,7 @@
     .project-card .btn {
       align-self: flex-start;
       margin-top: 1rem;
+      box-shadow: none;
     }
 
     .contact-section {
@@ -347,7 +382,7 @@
       background-color: var(--bg);
       padding: 2.5rem;
       border-radius: 18px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 8px 20px var(--shadow);
     }
 
     .contact-form input,
@@ -379,9 +414,9 @@
     }
 
     .contact-section .btn2 {
-      margin: 15px auto;
-      display: block;
-      width: fit-content;
+      margin: 15px 10px;
+      display: inline-block;
+      width: auto;
     }
 
     .footer {
@@ -498,7 +533,6 @@
 
 
     @keyframes float {
-
       0%,
       100% {
         transform: translateY(0px);
@@ -509,7 +543,7 @@
       }
     }
 
-    @keyframes fadeIn {
+    @keyframes fadeInScale {
       from {
         opacity: 0;
         transform: scale(0.8);
@@ -563,7 +597,7 @@
 <body>
 
   <nav class="navbar">
-    <div class="logo"><i class="fas fa-laptop-code"></i> Pratik</div>
+    <div class="logo" data-aos="fade-down"><i class="fas fa-laptop-code"></i> Pratik</div>
     <div class="nav-links" id="navLinks">
       <a href="#home">Home</a>
       <a href="#skills">Skills</a>
@@ -581,14 +615,15 @@
 
   <section class="hero" id="home">
     <img src="photo1.jpg" alt="Pratik Chalise" class="profile-img">
-    <h1>Hi, I am Pratik Chalise</h1>
-    <p>I’m a student reading in Grade 9 with a passion for modern website design. I am learning JS right now. Besides coding, I love to watch football.</p>
-    <a href="#contact" class="btn">Contact Me</a>
+    <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Hi, I am Pratik Chalise</h1>
+    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">I’m a student reading in Grade 9 with a passion
+      for modern website design. I am learning JS right now. Besides coding, I love to watch football.</p>
+    <a href="#contact" class="btn" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600">Contact Me</a>
   </section>
 
 
   <section class="skills-section" id="skills">
-    <h2>What I Know!</h2>
+    <h2 data-aos="fade-right" data-aos-duration="1000">What I Know!</h2>
     <div class="skills">
       <div class="skill-card" data-aos="fade-up" data-aos-duration="1000">
         <i class="fab fa-html5"></i>
@@ -613,27 +648,28 @@
     </div>
   </section>
 
+
   <section class="projects-section" id="projects1">
-    <h2>My Projects</h2>
+    <h2 data-aos="fade-left" data-aos-duration="1000">My Projects</h2>
     <div class="projects">
-      <div class="project-card" data-aos="zoom-in-up" data-aos-duration="1000">
+      <div class="project-card" data-aos="zoom-in" data-aos-duration="1000">
         <h3>Top 7 Football Clubs</h3>
         <p>My first webpage when I started my journey.</p>
         <a href="https://7bestfootbalclubs.netlify.app/" target="_blank" class="btn">Visit</a>
       </div>
-      <div class="project-card" data-aos="zoom-in-up" data-aos-duration="1200" data-aos-delay="100">
+      <div class="project-card" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="100">
         <h3>My Football Club Picks</h3>
         <p>My second website showing football club details.</p>
         <a href="https://pratik-clubs.netlify.app/" target="_blank" class="btn">Visit</a>
       </div>
 
-      <div class="project-card" data-aos="zoom-in-up" data-aos-duration="1400" data-aos-delay="200">
+      <div class="project-card" data-aos="zoom-in" data-aos-duration="1400" data-aos-delay="200">
         <h3>Kiran Gautam Portfolio</h3>
         <p>A beautiful portfolio site made for my brother. Also my first project with proper css and good typography.
         </p>
         <a href="https://kiran-gautam.netlify.app" target="_blank" class="btn">Visit</a>
       </div>
-      <div class="project-card" data-aos="zoom-in-up" data-aos-duration="1600" data-aos-delay="300">
+      <div class="project-card" data-aos="zoom-in" data-aos-duration="1600" data-aos-delay="300">
         <h3>Football league simulator</h3>
         <p>A league simulator where you can make your own tournament with specific number of teams and simulate it.</p>
         <a href="https://pratikleaguesimulator.netlify.app" target="_blank" class="btn">Visit</a>
@@ -643,21 +679,25 @@
 
 
   <section class="contact-section" id="contact">
-    <h2>Get in Touch</h2>
-    <p>Feel free to reach out to me! Whether you have a question, a project idea, or just want to connect, I'm happy to
+    <h2 data-aos="fade-up" data-aos-duration="1000">Get in Touch</h2>
+    <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Feel free to reach out to me! Whether you have a
+      question, a project idea, or just want to connect, I'm happy to
       hear from you. Call or email me and I’ll get back to you as soon as possible.</p>
+
     <form action="https://formspree.io/f/xyzjwqez" method="POST" class="contact-form" data-aos="fade-up"
-      data-aos-duration="1000">
+      data-aos-duration="1000" data-aos-delay="400">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
       <button type="submit" class="btn">Send Message</button>
     </form>
 
-    <a href="tel:9847264598" class="btn2">Call Me</a>
-    <a href="mailto:chalpratik3089@gmail.com" class="btn2">Mail Me</a>
+    <div class="contact-btns" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+      <a href="tel:9847264598" class="btn2" title="Call me">Call Me</a>
+      <a href="mailto:chalpratik3089@gmail.com" class="btn2" title="Mail me">Mail Me</a>
+    </div>
 
-    <div class="social-icons" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+    <div class="social-icons" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
       <a href="https://www.youtube.com/@vibewithpratik007" target="_blank" aria-label="YouTube"><i
           class="fab fa-youtube"></i></a>
       <a href="https://www.facebook.com/pratik.chalise.2025/" target="_blank" aria-label="Facebook"><i
@@ -746,5 +786,4 @@
     });
   </script>
 </body>
-
 </html>
